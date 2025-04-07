@@ -1,8 +1,13 @@
-import express from 'express';
+import express from "express";
+import mongoose from "mongoose";
 
-const app = express();
-const port: number = 8080;
+mongoose.connect("mongodb://localhost:27017")
+  .then(() => {
+    const app = express();
 
-app.listen(8080, () => {
-  console.log(`🚀 server start on port http://localhost:${port}`)
-});
+    const port: number = 8080;
+    app.listen(port, () => {
+      console.log(`🚀 server start on port http://localhost:${port}`);
+    });
+  })
+  .catch((e) => console.log(e.error));

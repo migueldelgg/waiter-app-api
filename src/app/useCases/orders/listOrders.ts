@@ -6,7 +6,8 @@ export async function listOrders(req: Request, res: Response) {
   try {
     const orders = await Order.find()
     .sort({ createdAt: 1 })
-    .populate('products.product');
+    .populate('products.product')
+    .where('is_active').equals(true);
 
     if (orders.length === 0) {
       res.status(404).json({ message: "No orders found" });

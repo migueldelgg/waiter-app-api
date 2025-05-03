@@ -30,5 +30,10 @@ export const Order = model('Order', new Schema({
       }
     }],
     required: true
+  },
+  is_active: {
+    type: Boolean,
+    required: true,
+    default: true,
   }
 }));
